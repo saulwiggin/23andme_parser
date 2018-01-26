@@ -1,9 +1,12 @@
 from flask import Flask, url_for, Request, jsonify
-from employee import Employee
+from seek_seq_nutri import analyse_genome
 
 app = Flask(__name__)
 
-
+@app.route('/json')
+def json():
+    d = analyse_genome
+    print d
 @app.route('/rs4654748')
 def vitaminB():
     r = requests.get('https://api.23andme.com/3/marker/rs10195681/')
@@ -37,4 +40,4 @@ def api_hello():
     # return resp
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=1345)
